@@ -1,8 +1,12 @@
-// server.js
-const express = require('express');
-const bodyParser = require('body-parser');
-const multer = require('multer');
-const path = require('path');
+
+import express from 'express'
+import bodyParser from 'body-parser';
+import multer from 'multer';
+import path from 'path';
+import Sequelize from 'sequelize'
+
+import fileRoutes from './routes/file.routes.js';
+
 const app = express();
 const port = 5001;
 
@@ -81,6 +85,20 @@ app.post('/send-obj', (req, res) => {
         res.status(500).send('Error decoding object');
     }
 });
+
+app.use('/file', fileRoutes)
+
+const sequelize = new Sequelize(
+    'test',
+    'root',
+    'T.a07082003',
+    {
+        host: 3306,
+        dialect: 'mysql'
+    }
+);
+
+
 
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);

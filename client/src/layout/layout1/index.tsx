@@ -8,6 +8,7 @@ const Layout1 = () => {
         <Link to='/file'>File</Link>
         <Link to='/send-obj'>Send Obj</Link>
         <Link to='/blob'>Blob</Link>
+        <Link to='/file-data'>/file-data</Link>
       </nav>
       <div className='wrapper'>{<Outlet />}</div>
     </div>
